@@ -1,79 +1,125 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Login Screen UI - React Native Frontend
 
-# Getting Started
+This is a **React Native CLI** project that demonstrates a **Login Screen** UI with email and password inputs, a password visibility toggle, and social login buttons.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Table of Contents
 
-## Step 1: Start the Metro Server
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the App](#running-the-app)
+- [Folder Structure](#folder-structure)
+- [Dependencies](#dependencies)
+- [Customization](#customization)
+- [Screenshots](#screenshots)
+- [License](#license)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Features
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- Email input field.
+- Password input field with eye icon to toggle visibility.
+- Responsive UI design with support for Android and iOS.
+- Google and Facebook login buttons.
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- **Node.js**: Make sure you have Node.js installed on your system. [Download here](https://nodejs.org).
+- **React Native CLI**: You'll need the React Native CLI for running the project. Follow the [React Native Environment Setup](https://reactnative.dev/docs/environment-setup) for installing the CLI.
+- **Android Studio** or **Xcode**: Required for Android or iOS development.
+
+## Installation
+
+### Step 1: Clone the Repository
+
+First, clone the project repository to your local machine:
 
 ```bash
-# using npm
-npm start
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
 
-# OR using Yarn
-yarn start
-```
+Step 2: Install Dependencies
 
-## Step 2: Start your Application
+Navigate to the project folder and run the following command to install the necessary dependencies:
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+bash
 
-### For Android
+npm install
 
-```bash
-# using npm
-npm run android
+This command will install all the dependencies listed in the package.json file.
+Running the App
 
-# OR using Yarn
-yarn android
-```
+Once the dependencies are installed, you can run the app on either an Android or iOS device/emulator.
+For Android:
 
-### For iOS
+Ensure that an Android emulator or device is connected and then run:
 
-```bash
-# using npm
-npm run ios
+bash
 
-# OR using Yarn
-yarn ios
-```
+npx react-native run-android
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+For iOS:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+Ensure that an iOS simulator or device is connected and then run:
 
-## Step 3: Modifying your App
+bash
 
-Now that you have successfully run the app, let's modify it.
+npx react-native run-ios
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+    Note: For iOS, you need to have Xcode installed.
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+Folder Structure
 
-## Congratulations! :tada:
+graphql
 
-You've successfully run and modified your React Native App. :partying_face:
+.
+├── android/                # Native Android project files
+├── ios/                    # Native iOS project files
+├── assets/                 # Images and assets
+│   ├── header.png          # Header image for the login screen
+│   ├── eye.png             # Eye icon for password toggle
+│   ├── google.png          # Google login icon
+│   └── facebook.png        # Facebook login icon
+├── src/                    # Source files for the app
+│   └── LoginScreen.js      # Main login screen component
+├── App.js                  # Entry point for the app
+├── README.md               # Project documentation
+├── package.json            # Project dependencies and scripts
 
-### Now what?
+Dependencies
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+This project relies on the following dependencies:
 
-# Troubleshooting
+    react-native: Framework for building native apps.
+    react-native-vector-icons: For adding icons (such as the eye icon in the password field).
+    react-native-safe-area-context: For managing content layout within safe area boundaries.
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+To install these dependencies, run:
 
-# Learn More
+bash
 
-To learn more about React Native, take a look at the following resources:
+npm install react-native-vector-icons react-native-safe-area-context
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Linking Vector Icons
+
+After installing react-native-vector-icons, you may need to link it:
+
+bash
+
+npx react-native link react-native-vector-icons
+
+Customization
+
+You can customize the UI by modifying the styles or replacing assets:
+
+    Change colors and fonts in LoginScreen.js under the styles object.
+    Replace images in the assets/ folder (such as header.png, eye.png, etc.).
+
+Screenshots
+
+Here’s what the login screen looks like:
+
+License
+
+This project is licensed under the MIT License. You can use, modify, and distribute the code in any way.
