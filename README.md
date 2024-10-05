@@ -1,4 +1,4 @@
-# Project Title  
+# Contacts UI  
 
 ## Description  
 This project is a mobile application built using React Native that provides users with a login interface and navigation to a contacts screen. The app includes functionality for logging in via email and password, as well as social media authentication options.  
