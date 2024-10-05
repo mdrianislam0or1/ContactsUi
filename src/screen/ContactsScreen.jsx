@@ -1,57 +1,67 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet, Image } from 'react-native';
+import { fontFamily } from '../constants/fonts';
+import { colors } from '../constants/colors';
+import { useNavigation } from '@react-navigation/native';
 
-const contacts = new Array(10).fill({
+const contacts = new Array(25).fill({
   name: 'Ashpak Tamboli',
   jobTitle: 'Full Stack Developer, Superiofcafans',
   initials: 'AT',
 });
 
 const ContactsScreen = () => {
+  const navigation = useNavigation(); 
+
   const [searchText, setSearchText] = useState('');
 
   const renderContactItem = ({ item }) => (
     <View style={styles.contactItem}>
       <View style={styles.contactInfo}>
+      <TouchableOpacity
+       onPress={() => navigation.navigate('ProfileScreen')}
+      >
         <View style={styles.avatar}>
           <Text style={styles.avatarText}>{item.initials}</Text>
         </View>
+       </TouchableOpacity>
         <View>
           <Text style={styles.contactName}>{item.name}</Text>
           <Text style={styles.contactJobTitle}>{item.jobTitle}</Text>
         </View>
       </View>
-      <TouchableOpacity>
-
-      <Image source={require('../assets/More.png')} style={styles.moreIcon} />
-
-
+      <TouchableOpacity
+       onPress={() => navigation.navigate('ProfileScreen')}
+      >
+        <Image source={require('../assets/More.png')} style={styles.moreIcon} />
       </TouchableOpacity>
     </View>
   );
 
   return (
     <View style={styles.container}>
-    
       <View style={styles.header}>
         <Text style={styles.title}>Contacts</Text>
-        <TouchableOpacity style={styles.logoutButton}>
-        <Image source={require('../assets/Logout.png')} style={styles.logoutIcon} />
+        <TouchableOpacity style={styles.logoutButton}
+        onPress={() => navigation.navigate('LogInScreen')}
+        >
+          <Image source={require('../assets/Logout.png')} style={styles.logoutIcon} />
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
       </View>
 
       <Text style={styles.subtitle}>Total 25 Contacts</Text>
 
-    
-      <TextInput
-        style={styles.searchBar}
-        placeholder="Search Contacts"
-        value={searchText}
-        onChangeText={setSearchText}
-      />
+      <View style={styles.searchContainer}>
+        <Image source={require('../assets/Search.png')} style={styles.searchIcon} />
+        <TextInput
+          style={styles.searchBar}
+          placeholder="Search Contacts"
+          value={searchText}
+          onChangeText={setSearchText}
+        />
+      </View>
 
-     
       <FlatList
         data={contacts}
         keyExtractor={(item, index) => index.toString()}
@@ -71,43 +81,64 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 10,
   },
   title: {
+    fontFamily: fontFamily.SoraExtra,
     fontSize: 24,
+    lineHeight: 31.2,
+    color: colors.Black,
     fontWeight: 'bold',
   },
   logoutButton: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  logoutIcon:{
-    width:24,
-    height:24,
-    resizeMode:'contain',
+  logoutIcon: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
   },
-
   logoutText: {
-    color: '#FF4A00',
-    fontSize: 16,
+    color: colors.Primary,
+    fontFamily: fontFamily.InterBold,
+    fontSize: 15,
+    lineHeight: 18,
     marginLeft: 5,
   },
   subtitle: {
-    fontSize: 14,
-    color: '#A0A0A0',
-    marginVertical: 10,
+    fontSize: 12,
+    lineHeight: 19.2,
+    fontFamily: fontFamily.InterRegular,
+    color: colors.GreyOne,
+    marginBottom: 10,
   },
-  moreIcon:{
-    width:24,
-    height:24,
-    resizeMode:'contain',
+  moreIcon: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.GreyFive,
+    borderWidth: 1,
+    borderColor: colors.GreyThree,
+    borderRadius: 10,
+    paddingRight: 4,
+    paddingLeft: 14,
+    marginBottom: 18,
+  },
+  searchIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 6,
   },
   searchBar: {
-    backgroundColor: '#F5F5F5',
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    fontSize: 16,
+    flex: 1,
+    fontSize: 14,
+    fontFamily: fontFamily.InterRegular,
+    lineHeight: 22.4,
   },
   contactItem: {
     flexDirection: 'row',
@@ -125,23 +156,29 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: '#F8E71C',
+    backgroundColor: colors.SecondaryLight,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 15,
   },
   avatarText: {
-    color: '#000',
-    fontWeight: 'bold',
-    fontSize: 18,
+    color: colors.SecondaryDark,
+    fontFamily: fontFamily.InterBold,
+    fontSize: 14,
+    lineHeight: 22.4,
+    textAlign: 'center',
   },
   contactName: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: fontFamily.SoraBold,
+    lineHeight: 23.2,
+    color: colors.Black,
   },
   contactJobTitle: {
-    fontSize: 14,
-    color: '#A0A0A0',
+    fontSize: 12,
+    fontFamily:fontFamily.InterRegular,
+    lineHeight: 19.2,
+    color: colors.GreyOne,
   },
 });
 

@@ -1,7 +1,6 @@
-/* eslint-disable no-dupe-keys */
-/* eslint-disable quotes */
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+import { fontFamily } from '../constants/fonts';
 
 const ProfileScreen = ({ navigation }) => {
   const handleDelete = () => {
@@ -15,15 +14,11 @@ const ProfileScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-        <View style={styles.arrowLeft}>
-        <Image source={require('../assets/Arrow-Left.png')} style={styles.arrowLeftIcon} />
-        </View>
+          <Image source={require('../assets/Arrow-Left.png')} style={styles.arrowLeftIcon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleDelete}>
-            <View style={styles.actionButtons}>
-            <Image source={require('../assets/Trash.png')} style={styles.trashIcon} />
-            <Text style={styles.trashText}>Delete</Text>
-            </View>
+        <TouchableOpacity onPress={handleDelete} style={styles.deleteButton}>
+          <Image source={require('../assets/Trash.png')} style={styles.trashIcon} />
+          <Text style={styles.deleteText}>Delete</Text>
         </TouchableOpacity>
       </View>
 
@@ -38,26 +33,26 @@ const ProfileScreen = ({ navigation }) => {
 
       <View style={styles.actionButtons}>
         <TouchableOpacity style={styles.saveButton}>
-        <Image source={require('../assets/Download.png')} style={styles.downloadIcon} />
+          <Image source={require('../assets/Download.png')} style={styles.downloadIcon} />
           <Text style={styles.saveButtonText}>Save to phone</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.shareButton}>
-        <Image source={require('../assets/Share.png')} style={styles.shareIcon} />
+          <Image source={require('../assets/Share.png')} style={styles.shareIcon} />
           <Text style={styles.shareButtonText}>Share contact</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.contactInfoContainer}>
         <View style={styles.contactInfo}>
-          <Text style={styles.infoLabel}>Email</Text>
+          <Text style={styles.infoLabelEmail}>Email</Text>
           <Text style={styles.infoText}>jane.doe@gmail.com</Text>
         </View>
         <View style={styles.contactInfo}>
-          <Text style={styles.infoLabel}>Phone</Text>
+          <Text style={styles.infoLabelPhone}>Phone</Text>
           <Text style={styles.infoText}>555-1234</Text>
         </View>
-        <View style={styles.contactInfo}>
-          <Text style={styles.infoLabel}>Date Created</Text>
+        <View style={styles.contactInfoDate}>
+          <Text style={styles.infoLabelDate}>Date Created</Text>
           <Text style={styles.infoText}>25 March, 2024</Text>
         </View>
       </View>
@@ -71,120 +66,171 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 20,
   },
-  arrowLeft:{
-    paddingVertical: 20,
-  },
-  arrowLeftIcon:{
-    width:24,
-    height: 24,
-  },
-  actionButtons:{
-    flexDirection: 'row',
-    justifyContent:'space-between',
-
-  },
-trashIcon:{
-    width: 24,
-    height: 24,
-  },
-  trashText:{
-    color: "#FB5200",
-    paddingHorizontal: 6,
-    paddingVertical:3
-},
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 50,
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  arrowLeftIcon: {
+    width: 24,
+    height: 24,
+  },
+  trashIcon: {
+    width: 20,
+    height: 20,
+  },
+  deleteButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  deleteText: {
+    color: '#FB5200',
+    fontFamily: fontFamily.InterBold,
+    fontSize: 15,
+    lineHeight: 18,
+    marginLeft: 5,
   },
   avatarContainer: {
     alignItems: 'center',
-    marginVertical: 30,
+    marginVertical: 20,
   },
   avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    backgroundColor: '#F8E71C',
+    width: 90,
+    height: 90,
+    borderRadius: 50,
+    backgroundColor: '#FEF3C7',
     justifyContent: 'center',
     alignItems: 'center',
   },
   avatarText: {
-    color: '#000',
-    fontSize: 28,
+    color: '#AA9113',
+    fontSize: 31.5,
+    lineHeight: 50.4,
+    fontFamily: fontFamily.InterBold,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   name: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 'bold',
+    fontFamily: fontFamily.SoraBold,
     marginTop: 10,
+    lineHeight: 28,
+    textAlign: 'center',
+    color: '#292B2D',
+
   },
   jobTitle: {
     fontSize: 16,
-    color: '#A0A0A0',
+    fontFamily: fontFamily.SoraRegular,
+    color: '#71757A',
+    lineHeight: 22.4,
+    textAlign: 'center',
   },
   company: {
     fontSize: 16,
-    color: '#A0A0A0',
+    color: '#292B2D',
+    lineHeight: 22.4,
+    textAlign: 'center',
+    fontFamily: fontFamily.SoraBold
   },
   actionButtons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 20,
   },
-  downloadIcon:{
-    width: 24,
-    height: 24,
+  downloadIcon: {
+    width: 18,
+    height: 18,
   },
-  shareIcon:{
-    width: 24,
-    height: 24,
+  shareIcon: {
+    width: 18,
+    height: 18,
   },
   saveButton: {
-   
-
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#000',
-    borderWidth: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingRight: 20,
+    paddingLeft: 20,
+    backgroundColor: '#EAEAEA',
+    borderRadius: 50,
+    flex: 1,
+    marginRight: 10,
   },
   saveButtonText: {
-    color: '#000',
+    color: '#2C2B2A',
+    fontSize: 15,
+    lineHeight: 18,
     marginLeft: 10,
+    fontFamily: fontFamily.InterBold
   },
   shareButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#000',
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingRight: 20,
+    paddingLeft: 20,
+    backgroundColor: '#2C2B2A',
+    borderRadius: 50,
+    flex: 1,
+    marginLeft: 10,
   },
   shareButtonText: {
-    color: '#fff',
+    color: '#ffffff',
+    fontSize: 15,
+    lineHeight: 18,
+    fontFamily: fontFamily.InterBold,
     marginLeft: 10,
   },
   contactInfoContainer: {
     marginTop: 30,
-    padding: 15,
     borderRadius: 10,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#EAEAEA',
   },
   contactInfo: {
-    marginBottom: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#EAEAEA',
+    paddingBottom: 10,
   },
-  infoLabel: {
-    fontSize: 14,
-    color: '#000',
-    fontWeight: 'bold',
+  contactInfoDate: {
+    paddingBottom: 10,
+  },
+  infoLabelEmail: {
+    fontSize: 12,
+    color: '#7B7573',
+    fontFamily: fontFamily.InterMedium,
+    lineHeight: 19.2,
+    paddingLeft: 16,
+    paddingTop: 14
+  },
+  infoLabelPhone: {
+    fontSize: 12,
+    color: '#7B7573',
+    fontFamily: fontFamily.InterMedium,
+    lineHeight: 19.2,
+    paddingLeft: 16,
+    paddingTop: 14
+  },
+  infoLabelDate: {
+    fontSize: 12,
+    color: '#7B7573',
+    fontFamily: fontFamily.InterMedium,
+    lineHeight: 19.2,
+    paddingLeft: 16,
+    paddingTop: 14
   },
   infoText: {
     marginTop: 5,
-    color: '#A0A0A0',
+    color: '#2C2B2A',
+    lineHeight: 22.4,
     fontSize: 14,
+    fontFamily: fontFamily.InterRegular,
+    paddingLeft: 16
   },
 });
 

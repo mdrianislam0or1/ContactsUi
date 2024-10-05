@@ -1,139 +1,193 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { fontFamily } from '../constants/fonts';
+import { colors } from '../constants/colors';
+import { useNavigation } from '@react-navigation/native';
 
-const LoginScreen = () => {
-  const [showPassword, setShowPassword] = useState(false);
+const LoginScreen = (  ) => {
+
+  const navigation = useNavigation(); 
+
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Image source={require('../assets/header.png')} style={styles.headerImage} />
+    <View style={styles.container}>
+      <View style={styles.topBackground}>
+        <Image source={require('../assets/header.png')} style={styles.topBackgroundImage} />
       </View>
 
-      <View style={styles.content}>
-        <Text style={styles.title}>Log in to your account</Text>
+      <View style={styles.loginContainer}>
+        <Text style={styles.loginTitle}>Log in to your account</Text>
+        <View>
+          <Text style={styles.email}>Email address</Text>
+          <TextInput
+            style={styles.input}
+            placeholder=""
+            keyboardType="email-address"
+          />
+        </View>
 
-        <Text style={styles.label}>Email address</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType="email-address"
-          placeholder="Enter your email"
-        />
-
-        <Text style={styles.label}>Password</Text>
-
+        <Text style={styles.password}>Password</Text>
         <View style={styles.passwordContainer}>
           <TextInput
             style={styles.input}
-            secureTextEntry={!showPassword}
-            placeholder="Enter your password"
+            placeholder=""
+            secureTextEntry={!passwordVisible}
           />
-          <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={styles.eyeIcon}>
-            <Icon name={showPassword ? 'eye' : 'eye-slash'} size={20} color="gray" />
+          <TouchableOpacity
+            onPress={() => setPasswordVisible(!passwordVisible)}
+            style={styles.eyeIconContainer}
+          >
+            <Image source={require('../assets/eye.png')} style={styles.eyeIcon} />
           </TouchableOpacity>
         </View>
-
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity style={styles.loginButton} 
+        onPress={() => navigation.navigate('ContactsScreen')}
+        >
           <Text style={styles.loginButtonText}>Log in</Text>
         </TouchableOpacity>
 
-        <Text style={styles.orText}>Or, Log in with</Text>
-
-        <View style={styles.socialButtons}>
+        <View style={styles.orContainer}>
+          <View style={styles.line} />
+          <Text style={styles.orText}>Or, Log in with</Text>
+          <View style={styles.line} />
+        </View>
+        <View style={styles.socialLoginContainer}>
           <TouchableOpacity style={styles.socialButton}>
             <Image source={require('../assets/google.png')} style={styles.socialIcon} />
           </TouchableOpacity>
-
           <TouchableOpacity style={styles.socialButton}>
             <Image source={require('../assets/facebook.png')} style={styles.socialIcon} />
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.White,
   },
-  header: {
-    flex: 1,
-    backgroundColor: '#FF4A00',
+  topBackground: {
+    height: '35%',
+    backgroundColor: colors.Primary,
     overflow: 'hidden',
-    alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: -14,
+    alignItems: 'center',
   },
-  headerImage: {
+  topBackgroundImage: {
     width: '100%',
     height: '100%',
-    resizeMode: 'contain',
+    objectFit: 'center',
   },
-  content: {
-    flex: 2,
-    paddingHorizontal: 20,
+  loginContainer: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: colors.White,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    marginTop: -30,
   },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginVertical: 20,
-    textAlign: 'center',
+  loginTitle: {
+    fontSize: 24,
+    fontFamily: fontFamily.SoraExtra,
+    lineHeight: 31.2,
+    marginBottom: 20,
+    color: colors.Black,
   },
-  label: {
+  email: {
     fontSize: 14,
     lineHeight: 22.4,
+    marginBottom: 4,
+    fontFamily: fontFamily.InterMedium,
+    color: colors.Black,
+  },
+  password: {
+    fontSize: 14,
+    lineHeight: 22.4,
+    marginBottom: 4,
+    fontFamily: fontFamily.InterMedium,
+    color: colors.Black,
   },
   input: {
-    borderWidth: 1,
-    borderColor: '#E0E0E0',
+    backgroundColor: colors.White,
     borderRadius: 10,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 9,
     fontSize: 16,
-    marginVertical: 10,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: colors.GreyThree,
+    width: '100%',
   },
   passwordContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    position: 'relative',
   },
-  eyeIcon: {
+  eyeIconContainer: {
     position: 'absolute',
     right: 15,
-    top: 15,
+    top: 13,
+  },
+  eyeIcon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
   },
   loginButton: {
-    backgroundColor: '#FF4A00',
+    backgroundColor: colors.Primary,
+    borderRadius: 32,
     paddingVertical: 15,
-    borderRadius: 10,
-    marginVertical: 20,
     alignItems: 'center',
+    marginVertical: 20,
   },
   loginButtonText: {
-    color: '#fff',
+    color: '#ffffff',
     fontSize: 16,
-    fontWeight: 'bold',
+    lineHeight: 19.2,
+    fontFamily: fontFamily.InterBold,
+  },
+  orContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 15,
+    width: "70%",
+    alignSelf: 'center',
+  },
+  line: {
+    flex: 1,
+    height: 0.5,
+    backgroundColor: colors.CenterAlignment,
   },
   orText: {
     textAlign: 'center',
-    color: '#A0A0A0',
-    marginVertical: 10,
+    color: colors.OrText,
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: fontFamily.InterRegular,
+    marginHorizontal: 10,
   },
-  socialButtons: {
+  socialLoginContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 10,
+    justifyContent: 'space-around',
   },
   socialButton: {
-    marginHorizontal: 15,
+    backgroundColor: colors.White,
+    borderRadius: 14,
+    borderWidth: 1.3,
+    borderColor: colors.InnerAlignment,
     padding: 10,
+    width: '47%',
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+    alignItems: 'center',
   },
   socialIcon: {
-    width: 40,
-    height: 40,
+    width: 22,
+    height: 22,
     resizeMode: 'contain',
   },
 });
