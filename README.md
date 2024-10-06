@@ -15,6 +15,21 @@ This project is a mobile application built using React Native that provides user
 - **React Navigation**: Navigation library for React Native.  
 - **JavaScript/TypeScript**: Language for building the application.  
 
+## Screenshots  
+### Login Screen  
+![Login](https://github.com/user-attachments/assets/edb15efc-7384-4501-95ed-875c63ce604f)
+ 
+### Contacts Screen  
+![Contacts](https://github.com/user-attachments/assets/0256f1d0-9253-4301-8a5f-13b9acc2a9dd)
+
+
+### Profile Screen 
+![Profile](https://github.com/user-attachments/assets/29abc1f6-4cf2-474b-afe4-a42e47add916)
+
+### Call-Logs Screen 
+![Call-Logs](https://github.com/user-attachments/assets/270e77b1-9b26-4f34-92e6-ed5fb4f418c9)
+
+
 ## Installation  
 
 ### Prerequisites  
@@ -65,9 +80,3 @@ npx react-native run-android
 - Click "Log in" to navigate to the Contacts Screen.  
 - Alternatively, use the social login options to authenticate.  
 
-## Screenshots  
-### Login Screen  
-![Login Screen]()  
-
-### Contacts Screen  
-![Contacts Screen]() 

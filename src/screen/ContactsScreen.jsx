@@ -11,27 +11,32 @@ const contacts = new Array(25).fill({
 });
 
 const ContactsScreen = () => {
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
 
   const [searchText, setSearchText] = useState('');
 
   const renderContactItem = ({ item }) => (
     <View style={styles.contactItem}>
       <View style={styles.contactInfo}>
-      <TouchableOpacity
-       onPress={() => navigation.navigate('ProfileScreen')}
-      >
-        <View style={styles.avatar}>
-          <Text style={styles.avatarText}>{item.initials}</Text>
-        </View>
-       </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ProfileScreen')}
+        >
+          <View style={styles.avatar}>
+            <Text style={styles.avatarText}>{item.initials}</Text>
+          </View>
+        </TouchableOpacity>
         <View>
-          <Text style={styles.contactName}>{item.name}</Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ProfileScreen')}
+          >
+            <Text style={styles.contactName}>{item.name}</Text>
+
+          </TouchableOpacity>
           <Text style={styles.contactJobTitle}>{item.jobTitle}</Text>
         </View>
       </View>
       <TouchableOpacity
-       onPress={() => navigation.navigate('ProfileScreen')}
+        onPress={() => navigation.navigate('ProfileScreen')}
       >
         <Image source={require('../assets/More.png')} style={styles.moreIcon} />
       </TouchableOpacity>
@@ -43,7 +48,7 @@ const ContactsScreen = () => {
       <View style={styles.header}>
         <Text style={styles.title}>Contacts</Text>
         <TouchableOpacity style={styles.logoutButton}
-        onPress={() => navigation.navigate('LogInScreen')}
+          onPress={() => navigation.navigate('LogInScreen')}
         >
           <Image source={require('../assets/Logout.png')} style={styles.logoutIcon} />
           <Text style={styles.logoutText}>Logout</Text>
@@ -74,14 +79,14 @@ const ContactsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.White,
     paddingHorizontal: 20,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 15,
   },
   title: {
     fontFamily: fontFamily.SoraExtra,
@@ -146,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#F0F0F0',
+    borderBottomColor: colors.GreySix,
   },
   contactInfo: {
     flexDirection: 'row',
@@ -176,7 +181,7 @@ const styles = StyleSheet.create({
   },
   contactJobTitle: {
     fontSize: 12,
-    fontFamily:fontFamily.InterRegular,
+    fontFamily: fontFamily.InterRegular,
     lineHeight: 19.2,
     color: colors.GreyOne,
   },

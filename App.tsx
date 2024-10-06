@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import LoginScreen from './src/screen/LoginScreen'
 import ContactsScreen from './src/screen/ContactsScreen'
 import ProfileScreen from './src/screen/ProfileScreen'
+import CallLogScreen from './src/screen/CallLogScreen'
 
 const App = () => {
   const Stack = createNativeStackNavigator()
@@ -27,11 +28,15 @@ const App = () => {
           name={"ProfileScreen"}
           component={ProfileScreen}
         />
+        <Stack.Screen
+          name={"CallLogScreen"}
+          component={CallLogScreen}
+        />
 
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
-export default App
+export default App;
 

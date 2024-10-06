@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 import { fontFamily } from '../constants/fonts';
+import { colors } from '../constants/colors';
 
 const ProfileScreen = ({ navigation }) => {
   const handleDelete = () => {
@@ -32,7 +33,10 @@ const ProfileScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.actionButtons}>
-        <TouchableOpacity style={styles.saveButton}>
+        <TouchableOpacity
+          style={styles.saveButton}
+          onPress={() => navigation.navigate('CallLogScreen')}
+        >
           <Image source={require('../assets/Download.png')} style={styles.downloadIcon} />
           <Text style={styles.saveButtonText}>Save to phone</Text>
         </TouchableOpacity>
@@ -63,13 +67,13 @@ const ProfileScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.White,
     paddingHorizontal: 20,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 10,
+    marginTop: 15,
     alignItems: 'center',
   },
   arrowLeftIcon: {
@@ -85,7 +89,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   deleteText: {
-    color: '#FB5200',
+    color: colors.Primary,
     fontFamily: fontFamily.InterBold,
     fontSize: 15,
     lineHeight: 18,
@@ -99,12 +103,12 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     borderRadius: 50,
-    backgroundColor: '#FEF3C7',
+    backgroundColor: colors.SecondaryLight,
     justifyContent: 'center',
     alignItems: 'center',
   },
   avatarText: {
-    color: '#AA9113',
+    color: colors.SecondaryDark,
     fontSize: 31.5,
     lineHeight: 50.4,
     fontFamily: fontFamily.InterBold,
@@ -118,19 +122,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     lineHeight: 28,
     textAlign: 'center',
-    color: '#292B2D',
+    color: colors.TextPrimary,
 
   },
   jobTitle: {
     fontSize: 16,
     fontFamily: fontFamily.SoraRegular,
-    color: '#71757A',
+    color: colors.TextSecondary,
     lineHeight: 22.4,
     textAlign: 'center',
   },
   company: {
     fontSize: 16,
-    color: '#292B2D',
+    color: colors.TextPrimary,
     lineHeight: 22.4,
     textAlign: 'center',
     fontFamily: fontFamily.SoraBold
@@ -154,13 +158,13 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingRight: 20,
     paddingLeft: 20,
-    backgroundColor: '#EAEAEA',
+    backgroundColor: colors.GreyFour,
     borderRadius: 50,
     flex: 1,
     marginRight: 10,
   },
   saveButtonText: {
-    color: '#2C2B2A',
+    color: colors.Black,
     fontSize: 15,
     lineHeight: 18,
     marginLeft: 10,
@@ -173,13 +177,13 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingRight: 20,
     paddingLeft: 20,
-    backgroundColor: '#2C2B2A',
+    backgroundColor: colors.Black,
     borderRadius: 50,
     flex: 1,
     marginLeft: 10,
   },
   shareButtonText: {
-    color: '#ffffff',
+    color: colors.White,
     fontSize: 15,
     lineHeight: 18,
     fontFamily: fontFamily.InterBold,
@@ -188,13 +192,13 @@ const styles = StyleSheet.create({
   contactInfoContainer: {
     marginTop: 30,
     borderRadius: 10,
-    backgroundColor: '#fff',
+    backgroundColor: colors.White,
     borderWidth: 1,
-    borderColor: '#EAEAEA',
+    borderColor: colors.GreyFour,
   },
   contactInfo: {
     borderBottomWidth: 1,
-    borderBottomColor: '#EAEAEA',
+    borderBottomColor: colors.GreyFour,
     paddingBottom: 10,
   },
   contactInfoDate: {
@@ -202,7 +206,7 @@ const styles = StyleSheet.create({
   },
   infoLabelEmail: {
     fontSize: 12,
-    color: '#7B7573',
+    color: colors.GreyOne,
     fontFamily: fontFamily.InterMedium,
     lineHeight: 19.2,
     paddingLeft: 16,
@@ -210,7 +214,7 @@ const styles = StyleSheet.create({
   },
   infoLabelPhone: {
     fontSize: 12,
-    color: '#7B7573',
+    color: colors.GreyOne,
     fontFamily: fontFamily.InterMedium,
     lineHeight: 19.2,
     paddingLeft: 16,
@@ -218,7 +222,7 @@ const styles = StyleSheet.create({
   },
   infoLabelDate: {
     fontSize: 12,
-    color: '#7B7573',
+    color: colors.GreyOne,
     fontFamily: fontFamily.InterMedium,
     lineHeight: 19.2,
     paddingLeft: 16,
@@ -226,7 +230,7 @@ const styles = StyleSheet.create({
   },
   infoText: {
     marginTop: 5,
-    color: '#2C2B2A',
+    color: colors.Black,
     lineHeight: 22.4,
     fontSize: 14,
     fontFamily: fontFamily.InterRegular,
